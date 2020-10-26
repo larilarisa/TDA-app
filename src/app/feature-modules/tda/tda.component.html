@@ -1,0 +1,47 @@
+<div *ngIf="tda" class="tda-container">
+
+  <h2>TDA Component</h2>
+  <div class="tda-input-section">
+    <mat-form-field class="w-100">
+      <mat-label>Pharma SDO</mat-label>
+      <input matInput disabled value="{{tda.dateData[0].pharmaSdo}}">
+    </mat-form-field>
+    <button mat-icon-button  color="primary" aria-label="Click to edit" (click)="openEditDialog(tda.dateData, 'Pharma SDO', 'pharmaSdo')">
+          <mat-icon>access_time</mat-icon>
+        </button>
+  </div>
+  <div class="tda-input-section">
+  <mat-form-field class="w-100">
+      <mat-label>Medifilm price</mat-label>
+      <input matInput disabled value="{{tda.dateData[0].medifilmPrice}}">
+    </mat-form-field>
+    <button mat-icon-button  color="primary" aria-label="Click to edit" (click)="openEditDialog(tda.dateData, 'Medifilm price', 'medifilmPrice')">
+          <mat-icon>access_time</mat-icon>
+        </button>
+  </div>
+  <div class="tda-input-section">
+  <mat-form-field class="w-100">
+      <mat-label>Ex. Factory Price</mat-label>
+      <input matInput disabled value="{{tda.dateData[0].factoryPrice}}">
+    </mat-form-field>
+    <button mat-icon-button  color="primary" aria-label="Click to edit" (click)="openEditDialog(tda.dateData, 'Factory Price', 'factoryPrice')">
+          <mat-icon>access_time</mat-icon>
+        </button>
+  </div>
+  <div class="tda-input-section">
+  <mat-form-field class="w-100">
+      <mat-label>Status</mat-label>
+      <input matInput disabled value="{{tda.dateData[0].status}}">
+    </mat-form-field>
+    <button mat-icon-button  color="primary" aria-label="Click to edit" (click)="openEditDialog(tda.dateData, 'Status', 'status')">
+          <mat-icon>access_time</mat-icon>
+        </button>
+  </div>
+    <div class="tda-input-section">
+     <mat-checkbox [labelPosition]="'before'" [color]="'primary'" [checked]="!tda.isActiveMedifilmPrice"><p>Deactivate Medifilm Price</p></mat-checkbox>
+  </div>
+  <div class="tda-input-section">
+     <mat-checkbox [labelPosition]="'before'" [color]="'primary'" [checked]="tda.allowHiaReferencePackage"><p>Allow to set HIA reference package</p></mat-checkbox>
+  </div>
+
+</div>

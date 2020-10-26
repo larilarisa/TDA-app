@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Edit {{data.tdaLabelnput}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="genericForm">
+        <div formArrayName="dates">
+            <ng-container
+                *ngFor="let date of genericForm.get('dates')['controls']; let i=index"
+                [formGroupName]="i">
+                <div class="w-100">
+                    <mat-form-field class="mr-10">
+                        <mat-label>Date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field  *ngIf="data.valueToEdit!=='status'" class="mr-10">
+                        <mat-label>{{data.tdaLabelnput}} value</mat-label>
+                        <input type="number" matInput formControlName="value">
+                    </mat-form-field>
+                    <mat-form-field *ngIf="data.valueToEdit==='status'" class="mr-10">
+                        <mat-label>{{data.tdaLabelnput}} value</mat-label>
+                        <mat-select formControlName="value">
+                            <mat-option *ngFor="let status of statuses" [value]="date.status">
+                            {{status.status}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-icon-button  color="warn" (click)="deleteDate(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+        <button mat-stroked-button (click)="addNewDate()">Add</button>
+    </form>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+  <button mat-button [mat-dialog-close]="genericForm" cdkFocusInitial>Save</button>
+</div>
